@@ -64,6 +64,10 @@ module FoodCritic
       #
       #     FC123: My rule name: foo/recipes/default.rb
       warnings_to_display = @ignore_file ? quieter_warnings : @warnings
+
+      #FIXME: should this be here or refactored into Linter?
+      @is_failed = false if warnings_to_display.empty?
+
       warnings_to_display.map do |w|
         ["#{w.rule.code}: #{w.rule.name}: #{w.match[:filename]}",
          w.match[:line].to_i]
