@@ -54,7 +54,8 @@ module FoodCritic
 
     # If this review has failed or not.
     def failed?
-      @is_failed
+      #FIXME: this should probably be refactored
+      warnings_to_display.empty?
     end
 
     # Returns a string representation of this review. This representation is
@@ -63,11 +64,6 @@ module FoodCritic
       # Sorted by filename and line number.
       #
       #     FC123: My rule name: foo/recipes/default.rb
-      warnings_to_display = @ignore_file ? quieter_warnings : @warnings
-
-      #FIXME: should this be here or refactored into Linter?
-      @is_failed = false if warnings_to_display.empty?
-
       warnings_to_display.map do |w|
         ["#{w.rule.code}: #{w.rule.name}: #{w.match[:filename]}",
          w.match[:line].to_i]
@@ -77,6 +73,10 @@ module FoodCritic
     end
 
     private
+
+    def warnings_to_display
+      @ignore_file ? quieter_warnings : @warnings
+    end
 
     # Returns a multi-dimensional array of warnings to ignore in the review.
     #
