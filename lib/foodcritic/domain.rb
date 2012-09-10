@@ -55,7 +55,7 @@ module FoodCritic
     # If this review has failed or not.
     def failed?
       #FIXME: this should probably be refactored
-      warnings_to_display.empty?
+      warnings_to_display.any?
     end
 
     # Returns a string representation of this review. This representation is
