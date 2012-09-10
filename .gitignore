@@ -1,7 +1,6 @@
 .idea
 .yardoc
 *.html
-chef_dsl_metadata.json
 coverage
 doc
 pkg
