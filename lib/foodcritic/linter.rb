@@ -13,7 +13,7 @@ module FoodCritic
 
     # The default version that will be used to determine relevant rules. This
     # can be over-ridden at the command line with the `--chef-version` option.
-    DEFAULT_CHEF_VERSION = "0.10.10"
+    DEFAULT_CHEF_VERSION = "10.12.0"
 
     # Perform a lint check. This method is intended for use by the command-line
     # wrapper. If you are programatically using foodcritic you should use
